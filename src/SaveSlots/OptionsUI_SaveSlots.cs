@@ -40,13 +40,10 @@ namespace SaveSlots
             go.name = "Save Slot";
             var txt = go.GetComponent<TextMeshProUGUI>();
             txt.text = "Save Slot:";
-            var lt = GameObject.Instantiate(go.GetComponent<ReplacementText>(), Vector3.zero, Quaternion.identity);
+            var lt = go.GetComponent<ReplacementText>();
 
-            MelonLogger.Warning($"asd;f dsa  {go.GetComponent<ReplacementText>() == rotateDropdown.GetComponent<ReplacementText>()}");
-
-
-            var languageTerms = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            string key = "";
+            var keyPi = typeof(ReplacementText).GetField("key", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            keyPi.SetValue(lt, txt.text);
 
             var rect = go.GetComponent<RectTransform>();
             var rect0 = rotateDropdown.GetComponent<RectTransform>();
@@ -65,23 +62,6 @@ namespace SaveSlots
 
     }
     
-    [HarmonyPatch(typeof(LangaugeManager), "LoadLanguageFile")]
-    public class PatchUILanguageText
-    {
-
-        //static readonly KeyValuePair<string,string>
-
-        public static void Postfix(ref Dictionary<string,string> ___languageTerms, ref int ___chosenLanguageNum, ref List<string> ___discoveredFonts)
-        {
-            if (___discoveredFonts.Count < ___chosenLanguageNum)
-                ;
-            //var languageName = ___discoveredFonts?[]
-
-        }
-
-    }
-
-
 
     [HarmonyPatch(typeof(MenuManager), "Start")]
     public class OptionsBox_Menu
@@ -103,7 +83,7 @@ namespace SaveSlots
         }
     }
 
-    //[HarmonyPatch(typeof(Options), nameof(Options.EndEvent))]
+    [HarmonyPatch(typeof(Options), nameof(Options.EndEvent))]
     public class OptionsBox_Done
     {
         public static bool Prefix(ref Options __instance)
@@ -129,7 +109,7 @@ namespace SaveSlots
         }
     }
 
-    //[HarmonyPatch(typeof(Options), nameof(Options.QuitGame))]
+    [HarmonyPatch(typeof(Options), nameof(Options.QuitGame))]
     public class OptionsBox_Quit
     {
         public static bool Prefix(ref Options __instance)
@@ -155,7 +135,7 @@ namespace SaveSlots
         }
     }
 
-    //[HarmonyPatch(typeof(Options), "Start")]
+    [HarmonyPatch(typeof(Options), "Start")]
     public class OptionsBox_Start
     {
         public static bool Prefix(ref Options __instance)
@@ -182,7 +162,7 @@ namespace SaveSlots
     }
 
 
-    //[HarmonyPatch(typeof(OptionsSaveManager), nameof(OptionsSaveManager.SaveOptions))]
+    [HarmonyPatch(typeof(OptionsSaveManager), nameof(OptionsSaveManager.SaveOptions))]
     public class OptionsSaveManager_Save
     {
         public static bool Prefix(ref ES3Settings ___settings)
@@ -193,7 +173,7 @@ namespace SaveSlots
 
     }
 
-    //[HarmonyPatch(typeof(OptionsSaveManager), nameof(OptionsSaveManager.LoadOptions))]
+    [HarmonyPatch(typeof(OptionsSaveManager), nameof(OptionsSaveManager.LoadOptions))]
     public class OptionsSaveManager_Load
     {
         public static void Postfix(ref ES3Settings ___settings)
