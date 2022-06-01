@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveSlots", "SaveSlots\SaveSlots.csproj", "{44064BD4-913E-45C0-A035-12656CC2E888}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLoader4Mods", "LanguageLoader4Mods\LanguageLoader4Mods.csproj", "{58584371-573F-46C3-878E-1C1358A6647B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44064BD4-913E-45C0-A035-12656CC2E888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44064BD4-913E-45C0-A035-12656CC2E888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44064BD4-913E-45C0-A035-12656CC2E888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44064BD4-913E-45C0-A035-12656CC2E888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58584371-573F-46C3-878E-1C1358A6647B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58584371-573F-46C3-878E-1C1358A6647B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58584371-573F-46C3-878E-1C1358A6647B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58584371-573F-46C3-878E-1C1358A6647B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0E47EF8-56AE-42FC-BC7D-8139F607984B}
+	EndGlobalSection
+EndGlobal
