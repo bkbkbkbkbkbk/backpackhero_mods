@@ -9,7 +9,13 @@ this is how to use it:
 
 General Guide Line of how to choose your key:
     Just use the whole english text string as your key. 
-	In this way, it will usually not conflict with any official key; 
-	Additionally, if the key eventually clashes with keys from other mods, the translated text will likely be the same
+    In this way, it will usually not conflict with any official key; 
+    Additionally, if the key eventually clashes with keys from other mods, the translated text will likely be the same
 
    
+   
+How to Change ReplacementText.key via reflection?
+
+  var lt = gameObj.GetComponent<ReplacementText>();
+  var keyPi = typeof(ReplacementText).GetField("key", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+  keyPi.SetValue(lt, "your new key");
