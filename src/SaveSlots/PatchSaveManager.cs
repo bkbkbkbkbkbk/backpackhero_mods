@@ -37,6 +37,7 @@ namespace SaveSlots
 
             __result = __result.ToIEnumerable().Append(() =>
             {
+                ES3.StoreCachedFile();
                 PatchSaveManager.MakesureSaveDirExists();
                 ES3.CopyFile(opath, npath);
                 return new WaitForEndOfFrame();
