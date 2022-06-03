@@ -34,21 +34,23 @@ namespace SaveSlots
         {
             var opath = ___settings.path;
             var npath = PatchSaveManager.GetCurrentSlotFilePath();
+            var settings = ___settings;
 
-            __result = __result.ToIEnumerable().Append(() =>
-            {
-                ES3.StoreCachedFile();
-                PatchSaveManager.MakesureSaveDirExists();
-                ES3.CopyFile(opath, npath);
-                return new WaitForEndOfFrame();
-            }).Append(() => new WaitForSeconds(0.3f))
-            .Append(() =>
-            {
-                var gm = UnityEngine.GameObject.FindObjectOfType<GameManager>();
-                MelonLogger.Msg($"exported ES3File to {npath}");
-                gm?.CreatePopUp($"{PatchSaveManager.GetCurrentSlotFilename()} saved");
-                return new WaitForEndOfFrame();
-            }).GetEnumerator();
+            __result = __result.ToIEnumerable()
+                .Append(() => new WaitForSeconds(0.3f))
+                .Append(() =>
+                {
+                    PatchSaveManager.MakesureSaveDirExists();
+                    ES3.CopyFile(opath, npath);
+                    return new WaitForEndOfFrame();
+                })
+                .Append(() =>
+                {
+                    var gm = UnityEngine.GameObject.FindObjectOfType<GameManager>();
+                    MelonLogger.Msg($"exported ES3File to {npath}");
+                    gm?.CreatePopUp($"{PatchSaveManager.GetCurrentSlotFilename()} saved");
+                    return new WaitForEndOfFrame();
+                }).GetEnumerator();
 
         }
     }
